@@ -62,7 +62,7 @@ func main() {
 						msg.Text = text
 						break
 					}
-					text := data.NameSurah + "\n\n" + data.Verses.Text + "\n\n[IND] " + data.Verses.TranslationID + "\n[ENG] " + data.Verses.TranslationEn
+					text := data.NameSurah + "\n\n" + data.Verses.Text + "\n\n[IND] " + data.Verses.TranslationID + "\n\n[Latin] " + data.Verses.Latin
 					msg.Text = text
 				}
 			case "audio":

@@ -12,8 +12,8 @@ type GetSurahAndAyah struct {
 	Verses    struct {
 		Number        int
 		Text          string
-		TranslationEn string
 		TranslationID string
+		Latin         string
 	}
 }
 
@@ -42,7 +42,7 @@ func FindSurahAndAyahByNumber(numberSurah, numberAyah int64) (GetSurahAndAyah, e
 
 	var surahAndAyah GetSurahAndAyah
 
-	err := db.QueryRow("SELECT surahs.name, surah_verses.number, surah_verses.text, surah_verses.translation_en, surah_verses.translation_id FROM surahs JOIN surah_verses ON surah_verses.surah_id = surahs.id WHERE surahs.number_of_surah = ? AND surah_verses.number = ?", numberSurah, numberAyah).Scan(&surahAndAyah.NameSurah, &surahAndAyah.Verses.Number, &surahAndAyah.Verses.Text, &surahAndAyah.Verses.TranslationEn, &surahAndAyah.Verses.TranslationID)
+	err := db.QueryRow("SELECT surahs.name, surah_verses.number, surah_verses.text, surah_verses.latin, surah_verses.translation_id FROM surahs JOIN surah_verses ON surah_verses.surah_id = surahs.id WHERE surahs.number_of_surah = ? AND surah_verses.number = ?", numberSurah, numberAyah).Scan(&surahAndAyah.NameSurah, &surahAndAyah.Verses.Number, &surahAndAyah.Verses.Text, &surahAndAyah.Verses.Latin, &surahAndAyah.Verses.TranslationID)
 	if err != nil {
 		return surahAndAyah, err
 	}
